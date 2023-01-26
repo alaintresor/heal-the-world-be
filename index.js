@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import mongoConnect from './src/config/db.config.js'
 import dotenv from 'dotenv'
+import router from "./src/routers/index.js";
 dotenv.config()
 
 const port= 3000 ;
@@ -19,6 +20,8 @@ app.get('/',(req,res) =>{
         status:200
     })
 });
+
+app.use('/api/v1',router)
 
 app.use((req,res) =>{
     res.status(404).json({
