@@ -6,6 +6,28 @@ export const registerUser = async (req, res) => {
     try {
 
         const { firstname, lastname, username, gender, phone, age, email, address, password, role, confirm_password } = req.body
+        if (!firstname || firstname == "")
+            return res.status(200).json({ "success": false, message: "firstname is required" })
+        if (!lastname || lastname == "")
+            return res.status(200).json({ "success": false, message: "lastname is required" })
+        if (!username || username == "")
+            return res.status(200).json({ "success": false, message: "username is required" })
+        if (!gender || gender == "")
+            return res.status(200).json({ "success": false, message: "gender is required" })
+        if (!phone || phone == "")
+            return res.status(200).json({ "success": false, message: "phone is required" })
+        if (!age || age == "")
+            return res.status(200).json({ "success": false, message: "age is required" })
+        if (!email || email == "")
+            return res.status(200).json({ "success": false, message: "email is required" })
+        if (!address || address == "")
+            return res.status(200).json({ "success": false, message: "address is required" })
+        if (!password || password == "")
+            return res.status(200).json({ "success": false, message: "password is required" })
+        if (!role || role == "")
+            return res.status(200).json({ "success": false, message: "role is required" })
+        if (!confirm_password || confirm_password == "")
+            return res.status(200).json({ "success": false, message: "confirm_password is required" })
 
         const userExist = await User.findOne({ email })
         if (userExist)
