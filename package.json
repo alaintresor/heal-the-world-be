@@ -7,7 +7,6 @@
   "scripts": {
     "dev": "nodemon --exec babel-node index.js",
     "start": "node --experimental-specifier-resolution=node index.js",
-    "build": "rm -rf dist && babel ./server -d dist",
     "test": "mocha --recursive --exit --timeout 500000  --require @babel/register src/test/*/.js"
   },
   "author": "Rose",
