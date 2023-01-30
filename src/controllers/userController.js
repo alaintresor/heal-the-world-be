@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs"
 export const registerUser = async (req, res) => {
     try {
 
-        const { firstname, lastname, username, gender, age, email, address, password, role, confirm_password } = req.body
+        const { firstname, lastname, username, gender, phone, age, email, address, password, role, confirm_password } = req.body
 
         const userExist = await User.findOne({ email })
         if (userExist)
@@ -17,7 +17,7 @@ export const registerUser = async (req, res) => {
             const salt = await bcrypt.genSalt(10)
             const hashedPassword = await bcrypt.hash(password, salt)
             const user = new User({
-                firstname, lastname, username, gender, age, email, address, password: hashedPassword
+                firstname, lastname, username, gender, age, email, address, phone, password: hashedPassword
                 , role
             })
             const newUser = await user.save()
@@ -33,6 +33,7 @@ export const registerUser = async (req, res) => {
                     age,
                     email,
                     address,
+                    phone,
                     role,
                 }
             })

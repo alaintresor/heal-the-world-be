@@ -28,6 +28,11 @@ const schema = mongoose.Schema({
         required: [true, 'Please add a email'],
         unique: true
     },
+    phone: {
+        type: String,
+        required: [true, 'Please add a phone'],
+        unique: true
+    },
     password: {
         type: String,
         required: [true, 'Please add a password'],
