@@ -9,7 +9,7 @@ export const registerUser = async (req, res) => {
 
         const userExist = await User.findOne({ email })
         if (userExist)
-            res.status(400).json({ "success": false, message: "user email already exist" })
+            res.status(200).json({ "success": false, message: "user email already exist" })
         else {
             if (password !== confirm_password)
                 return res.status(400).json({ "error": "Two different password" })
