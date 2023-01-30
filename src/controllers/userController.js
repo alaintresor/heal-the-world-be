@@ -12,7 +12,7 @@ export const registerUser = async (req, res) => {
             res.status(200).json({ "success": false, message: "user email already exist" })
         else {
             if (password !== confirm_password)
-                return res.status(400).json({ "error": "Two different password" })
+                return res.status(200).json({ "success": false, message: "Two different password" })
 
             const salt = await bcrypt.genSalt(10)
             const hashedPassword = await bcrypt.hash(password, salt)
