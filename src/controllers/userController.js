@@ -90,7 +90,7 @@ export const userLogin = async (req, res) => {
         else res.json({ "success": false, message: "Invalid credation" }).status(400)
 
     } catch (error) {
-        res.json({ "success": false, message: error }).status(400)
+        res.status(500).json({ "success": false, message: error })
     }
 }
 

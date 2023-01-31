@@ -1,32 +1,29 @@
 import mongoose from "mongoose"
 
 const schema = mongoose.Schema({
-    userId: {
-        type: String,
-        required: [true, 'Please add a firstname'],
+    user: {
+        type: mongoose.Schema.Types.ObjectId, ref: 'User'
     },
     content: {
         type: String,
         required: [true, 'Please add a lastname'],
     },
     image: {
-        type: String,
-        required: [true, 'Please add a name'],
+        type: String
     },
     postedDate: {
         type: String,
         required: true,
         default: new Date()
     },
+    whoCanReplay: {
+        type: String
+    },
     comments: [{
-        user_id: {
+        user: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
-            ref: "User",
-        },
-        username: {
-            type: String,
-            required: true
+            ref: "User"
         },
         comment: {
             type: String,
@@ -39,7 +36,7 @@ const schema = mongoose.Schema({
         }
     }
     ],
-   
+
 })
 
 export default mongoose.model('Post', schema)
