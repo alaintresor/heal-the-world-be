@@ -1,6 +1,6 @@
 import express from "express";
-import { commentingOnPost, createPost, getAllPosts, getSinglePost } from "../controllers/postController.js";
 import protect from "../middleware/protectRoute.js"
+import { commentingOnPost, createPost, getAllPosts, getSinglePost } from "../controllers/postController.js";
 
 const router = express.Router()
 
