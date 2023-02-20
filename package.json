@@ -7,27 +7,28 @@
   "scripts": {
     "dev": "nodemon --exec babel-node index.js",
     "start": "node --experimental-specifier-resolution=node index.js",
-    "build": "rm -rf dist && babel ./server -d dist",
     "test": "mocha --recursive --exit --timeout 500000  --require @babel/register src/test/*/.js"
   },
   "author": "Rose",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.6",
+    "@babel/node": "^7.14.7",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/register": "^7.14.5",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.1",
+    "cloudinary": "^1.33.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "express-fileupload": "^1.4.0",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.0",
     "nodemon": "^2.0.20"
   },
-  "devDependencies": {
-    "@babel/cli": "^7.19.3",
-    "@babel/core": "^7.19.3",
-    "@babel/polyfill": "^7.12.1",
-    "@babel/node": "7.13.12",
-    "@babel/register": "^7.18.9",
-    "@babel/runtime": "^7.19.4"
-  }
+  "devDependencies": {}
 }

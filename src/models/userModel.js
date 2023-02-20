@@ -33,6 +33,9 @@ const schema = mongoose.Schema({
         required: [true, 'Please add a phone'],
         unique: true
     },
+    profileImage: {
+        type: String,
+    },
     password: {
         type: String,
         required: [true, 'Please add a password'],

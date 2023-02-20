@@ -1,6 +1,7 @@
 import User from "../models/userModel.js"
 import jwt from "jsonwebtoken"
 import bcrypt from "bcryptjs"
+import imageUploader from '../helpers/photoUpload.js';
 
 export const registerUser = async (req, res) => {
     try {
@@ -90,9 +91,80 @@ export const userLogin = async (req, res) => {
         else res.json({ "success": false, message: "Invalid credation" }).status(400)
 
     } catch (error) {
-        res.json({ "success": false, message: error }).status(400)
+        res.status(500).json({ "success": false, message: error })
     }
 }
+
+export const getUserProfile = async (req, res) => {
+    try {
+        const user = req.user
+        res.status(200).json({ "success": true, message: "user profile", data: user })
+    } catch (error) {
+        res.status(500).json({ "success": false, message: error })
+        console.log(error);
+    }
+}
+
+export const updateUserProfile = async (req, res) => {
+    try {
+        const user_id = req.user._id
+        const { firstname, lastname, username, gender, address, email, phone, age } = req.body
+
+        if (!firstname || firstname == "")
+            return res.status(200).json({ "success": false, message: "firstname is required" })
+        if (!lastname || lastname == "")
+            return res.status(200).json({ "success": false, message: "lastname is required" })
+        if (!username || username == "")
+            return res.status(200).json({ "success": false, message: "username is required" })
+        if (!gender && gender == "")
+            return res.status(200).json({ "success": false, message: "gender is required" })
+        if (!address || address == "")
+            return res.status(200).json({ "success": false, message: "address is required" })
+        if (!email || email == "")
+            return res.status(200).json({ "success": false, message: "email is required" })
+        if (!phone || phone == "")
+            return res.status(200).json({ "success": false, message: "phone is required" })
+        if (!age || age == "")
+            return res.status(200).json({ "success": false, message: "age is required" })
+
+        let image = ''
+        if (req.files) {
+            image = await imageUploader(req)
+            image = image.url
+        }
+
+        const updateUser = await User.findByIdAndUpdate(user_id, {
+            firstname,
+            lastname,
+            username,
+            gender,
+            age,
+            email,
+            address,
+            phone,
+            profileImage: image
+        }, { new: true })
+        res.status(200).json({
+            "success": true, message: "user updated successfully", data: {
+                id: updateUser._id,
+                firstname,
+                lastname,
+                username,
+                gender,
+                age,
+                email,
+                address,
+                phone,
+                profileImage: image
+            }
+        })
+
+    } catch (error) {
+        res.status(500).json({ "success": false, message: error })
+        console.log(error)
+    }
+}
+
 
 
 // generate token 
