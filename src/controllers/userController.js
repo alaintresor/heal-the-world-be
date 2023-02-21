@@ -84,6 +84,10 @@ export const userLogin = async (req, res) => {
                     address: user.address,
                     email: user.email,
                     role: user.role,
+                    phone: user.phone,
+                    dob: user.dob,
+                    profileImage: user.profileImage,
+                    
 
                 }
             })
