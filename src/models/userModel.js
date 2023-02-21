@@ -17,7 +17,7 @@ const schema = mongoose.Schema({
         type: String,
         required: [true, 'Please add a gender'],
     },
-    age: {
+    dob: {
         type: String,
     },
     address: {
