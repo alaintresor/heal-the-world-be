@@ -148,7 +148,7 @@ export const updateUserProfile = async (req, res) => {
             profileImage: image
         }, { new: true })
         res.status(200).json({
-            "success": true, message: "user updated successfully", data: {
+            "success": true, message: "user updated successfully", user: {
                 id: updateUser._id,
                 firstname,
                 lastname,
