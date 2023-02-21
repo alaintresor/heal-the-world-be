@@ -86,8 +86,7 @@ export const userLogin = async (req, res) => {
                     role: user.role,
                     phone: user.phone,
                     dob: user.dob,
-                    profileImage: user.profileImage,
-                    
+                    profileImage: user.profileImage                   
 
                 }
             })
