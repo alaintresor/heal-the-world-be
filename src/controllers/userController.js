@@ -108,7 +108,7 @@ export const getUserProfile = async (req, res) => {
 export const updateUserProfile = async (req, res) => {
     try {
         const user_id = req.user._id
-        const { firstname, lastname, username, gender, address, email, phone, age } = req.body
+        const { firstname, lastname, username, gender, address, email, phone, dob } = req.body
 
         if (!firstname || firstname == "")
             return res.status(200).json({ "success": false, message: "firstname is required" })
@@ -124,8 +124,8 @@ export const updateUserProfile = async (req, res) => {
             return res.status(200).json({ "success": false, message: "email is required" })
         if (!phone || phone == "")
             return res.status(200).json({ "success": false, message: "phone is required" })
-        if (!age || age == "")
-            return res.status(200).json({ "success": false, message: "age is required" })
+        if (!dob || dob == "")
+            return res.status(200).json({ "success": false, message: "dob is required" })
 
         let image = ''
         if (req.files) {
@@ -138,7 +138,7 @@ export const updateUserProfile = async (req, res) => {
             lastname,
             username,
             gender,
-            age,
+            dob,
             email,
             address,
             phone,
@@ -151,7 +151,7 @@ export const updateUserProfile = async (req, res) => {
                 lastname,
                 username,
                 gender,
-                age,
+                dob,
                 email,
                 address,
                 phone,
