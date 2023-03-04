@@ -1,0 +1,15 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _cloudinary = require("cloudinary");
+_cloudinary.v2.config({
+  cloud_name: 'dnipqs2mh',
+  api_key: '121464622239229',
+  api_secret: 'TxX4BUeXzeQVBohgb7n9rxrnro8'
+});
+var _default = _cloudinary.v2.uploader;
+exports["default"] = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjbG91ZGluYXJ5IiwiY29uZmlnIiwiY2xvdWRfbmFtZSIsImFwaV9rZXkiLCJhcGlfc2VjcmV0IiwidXBsb2FkZXIiXSwic291cmNlcyI6WyIuLi8uLi9zcmMvY29uZmlnL2Nsb3VkaW5hcnkuanMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgdjIgYXMgY2xvdWRpbmFyeSB9IGZyb20gJ2Nsb3VkaW5hcnknO1xyXG5cclxuY2xvdWRpbmFyeS5jb25maWcoe1xyXG4gICAgY2xvdWRfbmFtZTogJ2RuaXBxczJtaCcsXHJcbiAgICBhcGlfa2V5OiAnMTIxNDY0NjIyMjM5MjI5JyxcclxuICAgIGFwaV9zZWNyZXQ6ICdUeFg0QlVlWHplUVZCb2hnYjduOXJ4cm5ybzgnXHJcbn0pO1xyXG5cclxuXHJcbmV4cG9ydCBkZWZhdWx0IGNsb3VkaW5hcnkudXBsb2FkZXI7XHJcbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBQUE7QUFFQUEsY0FBVSxDQUFDQyxNQUFNLENBQUM7RUFDZEMsVUFBVSxFQUFFLFdBQVc7RUFDdkJDLE9BQU8sRUFBRSxpQkFBaUI7RUFDMUJDLFVBQVUsRUFBRTtBQUNoQixDQUFDLENBQUM7QUFBQyxlQUdZSixjQUFVLENBQUNLLFFBQVE7QUFBQSJ9

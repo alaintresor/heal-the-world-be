@@ -2,8 +2,8 @@ import express from "express";
 import bodyParser from "body-parser";
 import dotenv from 'dotenv'
 import cors from 'cors'
-import mongoConnect from './src/config/db.config.js'
-import router from "./src/routers/index.js";
+import mongoConnect from './config/db.config.js'
+import router from "./routers/index.js";
 import fileUploader from 'express-fileupload'
 
 dotenv.config()

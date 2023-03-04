@@ -1,0 +1,37 @@
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+var _express = _interopRequireDefault(require("express"));
+var _bodyParser = _interopRequireDefault(require("body-parser"));
+var _dotenv = _interopRequireDefault(require("dotenv"));
+var _cors = _interopRequireDefault(require("cors"));
+var _dbConfig = _interopRequireDefault(require("./config/db.config.js"));
+var _index = _interopRequireDefault(require("./routers/index.js"));
+var _expressFileupload = _interopRequireDefault(require("express-fileupload"));
+_dotenv["default"].config();
+var PORT = process.env.PORT || 3000;
+var app = (0, _express["default"])();
+(0, _dbConfig["default"])();
+app.use((0, _cors["default"])());
+app.use(_bodyParser["default"].urlencoded({
+  extended: false
+}));
+app.use(_express["default"].json());
+app.use((0, _expressFileupload["default"])({
+  useTempFiles: true
+}));
+app.get('/', function (req, res) {
+  res.status(200).json({
+    message: "let's get started ",
+    status: 200
+  });
+});
+app.use('/api/v1', _index["default"]);
+app.use(function (req, res) {
+  res.status(404).json({
+    message: "endpoint not found",
+    status: 404
+  });
+});
+app.listen(PORT, console.log("server is running on PORT ".concat(PORT)));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJkb3RlbnYiLCJjb25maWciLCJQT1JUIiwicHJvY2VzcyIsImVudiIsImFwcCIsImV4cHJlc3MiLCJtb25nb0Nvbm5lY3QiLCJ1c2UiLCJjb3JzIiwiYm9keVBhcnNlciIsInVybGVuY29kZWQiLCJleHRlbmRlZCIsImpzb24iLCJmaWxlVXBsb2FkZXIiLCJ1c2VUZW1wRmlsZXMiLCJnZXQiLCJyZXEiLCJyZXMiLCJzdGF0dXMiLCJtZXNzYWdlIiwicm91dGVyIiwibGlzdGVuIiwiY29uc29sZSIsImxvZyJdLCJzb3VyY2VzIjpbIi4uL3NyYy9pbmRleC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgZXhwcmVzcyBmcm9tIFwiZXhwcmVzc1wiO1xyXG5pbXBvcnQgYm9keVBhcnNlciBmcm9tIFwiYm9keS1wYXJzZXJcIjtcclxuaW1wb3J0IGRvdGVudiBmcm9tICdkb3RlbnYnXHJcbmltcG9ydCBjb3JzIGZyb20gJ2NvcnMnXHJcbmltcG9ydCBtb25nb0Nvbm5lY3QgZnJvbSAnLi9jb25maWcvZGIuY29uZmlnLmpzJ1xyXG5pbXBvcnQgcm91dGVyIGZyb20gXCIuL3JvdXRlcnMvaW5kZXguanNcIjtcclxuaW1wb3J0IGZpbGVVcGxvYWRlciBmcm9tICdleHByZXNzLWZpbGV1cGxvYWQnXHJcblxyXG5kb3RlbnYuY29uZmlnKClcclxuXHJcbmNvbnN0IFBPUlQgPSBwcm9jZXNzLmVudi5QT1JUIHx8IDMwMDA7XHJcblxyXG5cclxuY29uc3QgYXBwID0gZXhwcmVzcygpO1xyXG5tb25nb0Nvbm5lY3QoKTtcclxuXHJcbmFwcC51c2UoY29ycygpKVxyXG5hcHAudXNlKGJvZHlQYXJzZXIudXJsZW5jb2RlZCh7IGV4dGVuZGVkOiBmYWxzZSB9KSlcclxuYXBwLnVzZShleHByZXNzLmpzb24oKSlcclxuYXBwLnVzZShmaWxlVXBsb2FkZXIoeyB1c2VUZW1wRmlsZXM6IHRydWUgfSkpXHJcblxyXG5hcHAuZ2V0KCcvJywgKHJlcSwgcmVzKSA9PiB7XHJcbiAgICByZXMuc3RhdHVzKDIwMCkuanNvbih7XHJcbiAgICAgICAgbWVzc2FnZTogXCJsZXQncyBnZXQgc3RhcnRlZCBcIixcclxuICAgICAgICBzdGF0dXM6IDIwMFxyXG4gICAgfSlcclxufSk7XHJcblxyXG5hcHAudXNlKCcvYXBpL3YxJywgcm91dGVyKVxyXG5cclxuYXBwLnVzZSgocmVxLCByZXMpID0+IHtcclxuICAgIHJlcy5zdGF0dXMoNDA0KS5qc29uKHtcclxuICAgICAgICBtZXNzYWdlOiBcImVuZHBvaW50IG5vdCBmb3VuZFwiLFxyXG4gICAgICAgIHN0YXR1czogNDA0XHJcbiAgICB9KVxyXG59KVxyXG5cclxuYXBwLmxpc3RlbihQT1JULCBjb25zb2xlLmxvZyhgc2VydmVyIGlzIHJ1bm5pbmcgb24gUE9SVCAke1BPUlR9YCkpIl0sIm1hcHBpbmdzIjoiOzs7QUFBQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUVBQSxrQkFBTSxDQUFDQyxNQUFNLEVBQUU7QUFFZixJQUFNQyxJQUFJLEdBQUdDLE9BQU8sQ0FBQ0MsR0FBRyxDQUFDRixJQUFJLElBQUksSUFBSTtBQUdyQyxJQUFNRyxHQUFHLEdBQUcsSUFBQUMsbUJBQU8sR0FBRTtBQUNyQixJQUFBQyxvQkFBWSxHQUFFO0FBRWRGLEdBQUcsQ0FBQ0csR0FBRyxDQUFDLElBQUFDLGdCQUFJLEdBQUUsQ0FBQztBQUNmSixHQUFHLENBQUNHLEdBQUcsQ0FBQ0Usc0JBQVUsQ0FBQ0MsVUFBVSxDQUFDO0VBQUVDLFFBQVEsRUFBRTtBQUFNLENBQUMsQ0FBQyxDQUFDO0FBQ25EUCxHQUFHLENBQUNHLEdBQUcsQ0FBQ0YsbUJBQU8sQ0FBQ08sSUFBSSxFQUFFLENBQUM7QUFDdkJSLEdBQUcsQ0FBQ0csR0FBRyxDQUFDLElBQUFNLDZCQUFZLEVBQUM7RUFBRUMsWUFBWSxFQUFFO0FBQUssQ0FBQyxDQUFDLENBQUM7QUFFN0NWLEdBQUcsQ0FBQ1csR0FBRyxDQUFDLEdBQUcsRUFBRSxVQUFDQyxHQUFHLEVBQUVDLEdBQUcsRUFBSztFQUN2QkEsR0FBRyxDQUFDQyxNQUFNLENBQUMsR0FBRyxDQUFDLENBQUNOLElBQUksQ0FBQztJQUNqQk8sT0FBTyxFQUFFLG9CQUFvQjtJQUM3QkQsTUFBTSxFQUFFO0VBQ1osQ0FBQyxDQUFDO0FBQ04sQ0FBQyxDQUFDO0FBRUZkLEdBQUcsQ0FBQ0csR0FBRyxDQUFDLFNBQVMsRUFBRWEsaUJBQU0sQ0FBQztBQUUxQmhCLEdBQUcsQ0FBQ0csR0FBRyxDQUFDLFVBQUNTLEdBQUcsRUFBRUMsR0FBRyxFQUFLO0VBQ2xCQSxHQUFHLENBQUNDLE1BQU0sQ0FBQyxHQUFHLENBQUMsQ0FBQ04sSUFBSSxDQUFDO0lBQ2pCTyxPQUFPLEVBQUUsb0JBQW9CO0lBQzdCRCxNQUFNLEVBQUU7RUFDWixDQUFDLENBQUM7QUFDTixDQUFDLENBQUM7QUFFRmQsR0FBRyxDQUFDaUIsTUFBTSxDQUFDcEIsSUFBSSxFQUFFcUIsT0FBTyxDQUFDQyxHQUFHLHFDQUE4QnRCLElBQUksRUFBRyxDQUFDIn0=
